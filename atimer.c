@@ -32,22 +32,34 @@ int main(int argc, char const *argv[]) {
 
   //Read the arguments
   int i;
+  if(argc == 1){
+    printf("Usage: -h <number of hours> -m <number of minutes -s <number of seconds> -a <action to be performed>\n");
+    return 0;
+  }
   for(i=1; i<argc; i++){
     if(!strComp(argv[i], "-h")){
-      hours = strToInt(argv[i+1]);
-      i++;
+      if(argv[i+1]){
+        hours = strToInt(argv[i+1]);
+        i++;
+      }
     }
     else if(!strComp(argv[i], "-m")){
-      minutes = strToInt(argv[i+1]);
-      i++;
+      if(argv[i+1]){
+        minutes = strToInt(argv[i+1]);
+        i++;
+      }
     }
     else if(!strComp(argv[i], "-s")){
-      seconds = strToInt(argv[i+1]);
-      i++;
+      if(argv[i+1]){
+        seconds = strToInt(argv[i+1]);
+        i++;
+      }
     }
     else if(!strComp(argv[i], "-a")){
-      strcpy(command, argv[i+1]);
-      i++;
+      if(argv[i+1]){
+        strcpy(command, argv[i+1]);
+        i++;
+      }
     }
   }
   //Timer loop
